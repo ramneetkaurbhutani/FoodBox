@@ -1,0 +1,36 @@
+
+
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+    <h3>Update Food</h3>
+
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="food.name">
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Image Url</label>
+            <input type="text" class="form-control" id="imageUrl" name="imageUrl" [(ngModel)]="food.imageUrl">
+        </div>
+        <div class="form-group">
+            <label for="unitPrice">Unit Price</label>
+            <input type="text" class="form-control" id="unitPrice" name="unitPrice" [(ngModel)]="food.unitPrice">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="food.description">
+        </div>
+        <div class="form-group">
+            <label for="active">Active</label>
+            <input type="text" class="form-control" id="active" name="active" [(ngModel)]="food.active">
+        </div>
+        <br>
+        <button class="btn btn-success">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+
+

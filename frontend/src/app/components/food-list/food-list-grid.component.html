@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <!-- <h4>Cuisine: {{ currentCuisineName}}</h4>
+        <hr> -->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- loop over the collection of foods -->
+                <div *ngFor="let tempFood of foods" class="col-md-3">
+                    <div class="food-box">
+                        <a routerLink="/foods/{{ tempFood.id }}">
+                            <img src="{{ tempFood.imageUrl }}" class="img-responsive">
+                        </a>
+
+                        <br>
+
+                        <a routerLink="/foods/{{ tempFood.id }}">
+                            <h1>{{ tempFood.name }}</h1>
+                        </a>
+
+                        <div class="price">{{ tempFood.unitPrice | currency: 'INR' }}</div>
+                        <button (click)="addToCart(tempFood)" class="btn btn-primary btn-sm">Add to cart</button>
+                    </div>
+                </div>
+                <!-- If foods empty then display a message-->
+                <div *ngIf="foods?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No foods found.
+                </div>
+            </div>
+
+            <!-- begin footer -->
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%;">
+                                <ngb-pagination [(page)]="thePageNumber"
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                [maxSize]="5"
+                                                [boundaryLinks]="true"
+                                                (pageChange)="listFoods()">
+
+                                </ngb-pagination>
+                            </div>
+                                
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+
+                                <select (change)="updatePageSize($event.target.value)">
+                                    <option>2</option>
+                                    <option selected="true">5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer -->
+
+        </div>
+        
+    </div>
+
+</div>

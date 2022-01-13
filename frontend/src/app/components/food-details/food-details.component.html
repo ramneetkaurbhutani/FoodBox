@@ -1,0 +1,21 @@
+<div class="detail-section">
+    <div class="container-fluid">
+
+        <img src="{{ food.imageUrl }}" class="detail-img">
+
+        <h3>{{ food.name }}</h3>
+        <div class="price">{{ food.unitPrice | currency:'INR'}}</div>
+        <button (click)="addToCart()" class="btn btn-primary btn-sm">Add to cart</button>
+
+        <hr>
+        <h4>Description</h4>
+        <p>{{ food.description }}</p>
+
+        <a routerLink="/foods" class="mt-5">Back to Food List</a>
+    </div>
+</div>
+
+
+
+
+

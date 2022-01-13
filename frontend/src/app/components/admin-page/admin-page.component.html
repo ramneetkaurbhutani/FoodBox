@@ -1,0 +1,79 @@
+<div class="main content">
+  
+    <div align="center" class="alert alert-warning col-md-12" role="alert">
+        <h3>Welcome to Admin Page</h3>
+    <hr>
+    
+        <button class="btn btn-primary btn-space" (click)="toAddCuisine()">Add Cuisine</button>
+
+        <button class="btn btn-danger btn-space" (click)="onDeleteCuisine()">Delete Cuisine</button>
+
+        <button class="btn btn-primary btn-space" (click)="addFood()">Add Food</button>
+    <hr>
+
+    <div align="center" class="alert alert-info col-md-12" role="alert">
+        <h3>Manage Food Items</h3>
+       
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Enabled</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tempFood of foodItems">
+        <td>{{ tempFood.id }}</td>
+        <td><img src="{{tempFood.imageUrl}}" width="150px"></td>
+        
+        <td>{{tempFood.name}}</td>
+        <td>{{tempFood.description}}</td>
+        <td>{{tempFood.unitPrice | currency: 'INR' }}</td>
+        <td>
+            <label class="switch">
+                <input type="checkbox" (toggle)="checked=$event" checked>
+                <span class="slider round"></span>
+              </label>
+        </td>
+        <td>
+          <button (click)="onEdit(tempFood.id)" class="btn btn-warning btn-space" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" >Update</button>
+            
+              <button (click)="onDelete(tempFood.id)" class="btn btn-danger" type="button" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Delete</button>
+               
+            </td> 
+        
+      </tr>
+    </tbody>
+  </table>
+
+    </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyleCuisine}">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add Cuisine</h5>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formValueCuisine">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" formControlName="name" class="form-control" id="name" [(ngModel)]="cuisineName">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="cancel" class="btn btn-secondary mr-1" data-bs-dismiss="modal" (click)="close()">Close</button>
+      <button type="button" (click)="addCuisine(cuisineName)" class="btn btn-primary">Add</button>
+    </div>
+  </div>
